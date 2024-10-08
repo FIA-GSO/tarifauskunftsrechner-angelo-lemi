@@ -2,6 +2,7 @@ preis_erwachsene = 5.0
 preis_kinder = 2.5
 preis_premium = 3.0
 preis_basis = 4.0
+test = 0
 
 print(" ### Tarifauskunftsrechner Museum XXX ### ")
 print(" Hallo, geben Sie bitte Ihr Alter ein.")
