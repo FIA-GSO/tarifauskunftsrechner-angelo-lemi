@@ -8,6 +8,7 @@ hinweis = "Tippen Sie y oder n ein\n"
 zwischenerg = 0.0
 gesamtsumme = 0.0
 
+
 def tarif():
     global preis_erwachsene, preis_kinder, preis_jungendlich, preis_premium, preis_basis, zwischenerg
     print(" ### Tarifauskunftsrechner Museum XXX ### ")
@@ -46,39 +47,41 @@ def tarif():
                 print("Cheers")
                 zwischenerg += preis_sekt
             elif antwort_sekt != "n":
-                print("Fehler bei der antwort: Ihre Antwort", antwort_sekt)
+                print("Fehler bei der Antwort: Ihre Antwort", antwort_sekt)
                 exit()
         elif antwort_rabatt == "b":
-                print(" ### Eintritt Basis-Mitglied ### ")
-                print(" Preis: ", preis_basis, " Euro ")
-                zwischenerg += preis_basis
+            print(" ### Eintritt Basis-Mitglied ### ")
+            print(" Preis: ", preis_basis, " Euro ")
+            zwischenerg += preis_basis
         else:
-                print(" ### Eintritt Erwachsene (voller Preis) ### ")
-                print(" Preis: ", preis_erwachsene, " Euro")
-                zwischenerg += preis_erwachsene
+            print(" ### Eintritt Erwachsene (voller Preis) ### ")
+            print(" Preis: ", preis_erwachsene, " Euro")
+            zwischenerg += preis_erwachsene
 
-tarif()
 
-print("Wollen sie einen weiteren Tarif abfragen?")
-tarif_abfrage = input()
-if tarif_abfrage == "y":
+while True:
     tarif()
-    preis_erwachsene /= 2
-    preis_kinder /= 2
-    preis_jungendlich /= 2
-    preis_premium /= 2
-    preis_basis /= 2
-elif tarif_abfrage == "n":
-    gesamtsumme = zwischenerg
-    print("Gesamtsumme: ", gesamtsumme)
-    print("\nViel Spaß!\n")
-    print("""\
+
+    # Preise zurücksetzen, falls Tagesticket gewählt war
+    preis_erwachsene = 5.0
+    preis_kinder = 2.5
+    preis_jungendlich = 3.5
+    preis_premium = 3.0
+    preis_basis = 4.0
+
+    print("Wollen Sie einen weiteren Tarif abfragen? (y/n)")
+    tarif_abfrage = input().strip().lower()
+    if tarif_abfrage == "n":
+        gesamtsumme = zwischenerg
+        print("Gesamtsumme: ", gesamtsumme)
+        print("\nViel Spaß!\n")
+        print("""\
 ██████╗ ██╗   ██╗██╗███████╗██████╗ ██╗   ██╗████████╗███████╗   
 ██╔══██╗██║   ██║██║██╔════╝██╔══██╗╚██╗ ██╔╝╚══██╔══╝██╔════╝██╗
 ██║  ██║██║   ██║██║███████╗██████╔╝ ╚████╔╝    ██║   █████╗  ╚═╝
 ██║  ██║██║   ██║██║╚════██║██╔══██╗  ╚██╔╝     ██║   ██╔══╝  ▄█╗
 ██████╔╝╚██████╔╝██║███████║██████╔╝   ██║      ██║   ███████╗▀═╝
 ╚═════╝  ╚═════╝ ╚═╝╚══════╝╚═════╝    ╚═╝      ╚═╝   ╚══════╝   
-                                                                 
-""")
 
+""")
+        break
