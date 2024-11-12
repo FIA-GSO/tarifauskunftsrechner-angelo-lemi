@@ -8,6 +8,7 @@ hinweis = "Tippen Sie y oder n ein\n"
 zwischenerg = 0.0
 gesamtsumme = 0.0
 
+# TEST
 
 def tarif():
     global preis_erwachsene, preis_kinder, preis_jungendlich, preis_premium, preis_basis, zwischenerg
